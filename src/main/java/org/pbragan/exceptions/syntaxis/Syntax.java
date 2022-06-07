@@ -15,9 +15,9 @@ import java.util.List;
  * Clase para demostrar alternativas de uso try catch en manejo de Exceptions.
  * Los service utilizados son solo para simular un contexto "real" y el código tener más sentido.
  */
-public class ExceptionSyntax {
+public class Syntax {
 
-    Logger logger = LoggerFactory.getLogger(ExceptionSyntax.class);
+    Logger logger = LoggerFactory.getLogger(Syntax.class);
 
     public String callingServiceThrowingToCaller(ExampleService exampleService) throws SyntaxException {
         try{
