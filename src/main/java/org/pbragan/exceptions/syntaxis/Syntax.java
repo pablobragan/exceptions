@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Clase para demostrar alternativas de uso try catch en manejo de Exceptions.
@@ -80,7 +81,7 @@ public class Syntax {
 
     public void readingATextFileResourceTry() {
         try(BufferedReader reader = new BufferedReader(
-                new InputStreamReader(this.getClass().getResourceAsStream("/example1.txt")));){
+                new InputStreamReader(this.getClass().getResourceAsStream("/texts/example1.txt")))){
             String line = reader.readLine();
             while( line != null){
                 System.out.println(line);
@@ -91,6 +92,5 @@ public class Syntax {
             System.out.println("FALLA LA LECTURA DE LINEAS");
         }
     }
-
 
 }
