@@ -14,6 +14,9 @@ import java.util.Objects;
 
 /**
  * Clase para demostrar alternativas de uso try catch en manejo de Exceptions.
+ * Además se muestra como definir exceptions en métodos.
+ * Como crear exceptions y arrojarlas.
+ * Como crearlas y como encadenarlas
  * Los service utilizados son solo para simular un contexto "real" y el código tener más sentido.
  */
 public class Syntax {
@@ -30,7 +33,7 @@ public class Syntax {
         try{
             return exampleService.save("Test");
         }catch (ExampleServiceException e){
-            throw new SyntaxException(e);
+            throw new SyntaxException("Error al querer guardar un String",e);
         }
     }
 
