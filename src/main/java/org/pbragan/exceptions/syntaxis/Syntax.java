@@ -20,6 +20,12 @@ public class Syntax {
 
     Logger logger = LoggerFactory.getLogger(Syntax.class);
 
+    /**
+     * En este ejemplo se demuestra el uso de try y catch para una checked Exception
+     * @param exampleService
+     * @return
+     * @throws SyntaxException
+     */
     public String callingServiceThrowingToCaller(ExampleService exampleService) throws SyntaxException {
         try{
             return exampleService.save("Test");
