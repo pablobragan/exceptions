@@ -1,4 +1,4 @@
-package org.pbragan.exceptions.examples.model;
+package org.pbragan.exceptions.exercises.model;
 
 public enum StatusEnum {
     DRAFT, ONLINE, OFFLINE;

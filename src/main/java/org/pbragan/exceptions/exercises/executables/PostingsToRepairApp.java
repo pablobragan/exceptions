@@ -1,7 +1,7 @@
-package org.pbragan.exceptions.examples.executables;
+package org.pbragan.exceptions.exercises.executables;
 
-import org.pbragan.exceptions.examples.model.Posting;
-import org.pbragan.exceptions.examples.services.PostingService;
+import org.pbragan.exceptions.exercises.model.Posting;
+import org.pbragan.exceptions.exercises.services.PostingService;
 
 import java.util.List;
 

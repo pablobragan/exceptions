@@ -1,6 +1,8 @@
 package org.pbragan.exceptions.examples.utils;
 
 import org.pbragan.exceptions.examples.model.*;
+import org.pbragan.exceptions.exercises.model.CountryEnum;
+import org.pbragan.exceptions.exercises.model.Publisher;
 
 import java.util.ArrayList;
 import java.util.Collection;

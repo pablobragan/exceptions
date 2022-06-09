@@ -1,6 +1,6 @@
-package org.pbragan.exceptions.examples.services;
+package org.pbragan.exceptions.exercises.services;
 
-import org.pbragan.exceptions.examples.model.Posting;
+import org.pbragan.exceptions.exercises.model.Posting;
 import org.pbragan.exceptions.examples.utils.PostingUtils;
 
 import java.util.ArrayList;

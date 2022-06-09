@@ -1,4 +1,4 @@
-package org.pbragan.exceptions.examples.model;
+package org.pbragan.exceptions.exercises.model;
 
 import java.util.Date;
 import java.util.Objects;
