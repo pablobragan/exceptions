@@ -2,6 +2,8 @@ package org.pbragan.exceptions.exercises.services;
 
 import org.pbragan.exceptions.exercises.model.Posting;
 import org.pbragan.exceptions.examples.utils.PostingUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -9,6 +11,7 @@ import java.util.LinkedList;
 
 public class PostingService {
 
+    private static final Logger logger = LoggerFactory.getLogger(PostingService.class);
     private Collection<Posting> cachedPostings;
 
     /**
