@@ -11,7 +11,6 @@ public class StackTraceService {
 
     public Stack<String> parseFromStackTrace(Exception e){
         Stack<String> stack = new Stack<>();
-        StringBuilder parsedElements = new StringBuilder();
         StackTraceElement elements[] = e.getStackTrace();
         for (int i = 0, n = elements.length; i < n; i++) {
             stack.push(elements[i].getFileName()

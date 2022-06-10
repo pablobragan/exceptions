@@ -71,9 +71,9 @@ public class Syntax {
         }
     }
 
-    public void readingATextFileFinallyBlock() throws IOException {
+    public void readingATextFileFinallyBlock()  {
         BufferedReader reader = new BufferedReader(
-                new InputStreamReader(this.getClass().getResourceAsStream("/example1.txt")));
+                new InputStreamReader(this.getClass().getResourceAsStream("/texts/example1.txt")));
         try{
             String line = reader.readLine();
             while( line != null){
@@ -84,7 +84,11 @@ public class Syntax {
             logger.error("Error leyendo linea", e);
             System.out.println("FALLA LA LECTURA DE LINEAS");
         } finally {
-            reader.close();
+            try {
+                reader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
