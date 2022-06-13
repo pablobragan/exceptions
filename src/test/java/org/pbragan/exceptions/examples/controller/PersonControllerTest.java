@@ -15,6 +15,7 @@ import org.pbragan.exceptions.examples.services.exceptions.PersonException;
 import org.pbragan.exceptions.examples.services.fakes.PersonaServiceDummyImpl;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 public class PersonControllerTest {
 
@@ -49,7 +50,7 @@ public class PersonControllerTest {
         //when
         assertThrows(PersonException.class, () -> personController.takeMorningShower(person),"No se arrojo la excepción esperada :-(");
         //then
-        Mockito.verify(personService,Mockito.times(1)).awake(person);
+        verify(personService,times(1)).awake(person);
         Mockito.verify(personService,Mockito.times(1)).getUpFromBed(person);
         Mockito.verify(personService,Mockito.never()).undress(person);
     }
