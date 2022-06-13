@@ -3,20 +3,56 @@ package org.pbragan.exceptions.examples.controller;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.pbragan.exceptions.examples.model.Person;
+import org.pbragan.exceptions.examples.model.PersonState;
+import org.pbragan.exceptions.examples.services.BathroomService;
+import org.pbragan.exceptions.examples.services.ClothesService;
+import org.pbragan.exceptions.examples.services.PersonService;
+import org.pbragan.exceptions.examples.services.exceptions.FallException;
+import org.pbragan.exceptions.examples.services.exceptions.NoWaterException;
+import org.pbragan.exceptions.examples.services.exceptions.PersonException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PersonControllerTest {
 
+    PersonService personService;
+    BathroomService bathroomService;
+    ClothesService clothesService;
+
+    PersonController personController;
     @BeforeEach
     void setUp() {
+        personService = Mockito.mock(PersonService.class);
+        bathroomService = Mockito.mock(BathroomService.class);
+        clothesService = Mockito.mock(ClothesService.class);
+
+        personController = new PersonController(personService,bathroomService,clothesService);
     }
 
     @AfterEach
     void tearDown() {
     }
 
+    /**
+     * En este se va a probar el caso en que la persona se cae de la cama, al levantarse, y queda gravemente
+     * herida.
+     */
     @Test
-    void takeMorningShower() {
+    public void takeMorningShower_personFalledAndBadlyHurt() throws PersonException, NoWaterException {
+        //given
+        Person person = Mockito.mock(Person.class);
+        Mockito.doThrow(FallException.class).when(personService).getUpFromBed(person);
+        Mockito.when(person.getState()).thenReturn(PersonState.BADLY_HURT);
+        //when
+        try {
+            Person personaLuegoDucha = personController.takeMorningShower(person);
+            fail("Se cayó y está mal herido, no debería haberse bañado...");
+        }catch (PersonException personException){
+            //then
+            assertEquals(PersonController.NO_ME_PUEDO_BAÑAR_ME_VOY_AL_MEDICO,personException.getMessage());
+        }
     }
 }

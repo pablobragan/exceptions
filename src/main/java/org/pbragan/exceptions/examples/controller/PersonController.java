@@ -13,6 +13,7 @@ import java.util.List;
 
 public class PersonController {
 
+    public static final String NO_ME_PUEDO_BAÑAR_ME_VOY_AL_MEDICO = "No me puedo bañar, me voy al medico";
     final PersonService personService;
     final BathroomService bathroomService;
     final ClothesService clothesService;
@@ -29,7 +30,7 @@ public class PersonController {
             personService.getUpFromBed(person);
         } catch (FallException e) {
             if(PersonState.BADLY_HURT.equals(person.getState())){
-                throw new PersonException("No me puedo bañar, me voy al medico");
+                throw new PersonException(NO_ME_PUEDO_BAÑAR_ME_VOY_AL_MEDICO);
             }
         }
         List<Clothes> dirtyClothes = personService.undress(person);
