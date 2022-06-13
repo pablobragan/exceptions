@@ -13,7 +13,7 @@ import java.util.List;
 
 public class PersonController {
 
-    public static final String NO_ME_PUEDO_BAÑAR_ME_VOY_AL_MEDICO = "No me puedo bañar, me voy al medico";
+    protected static final String NO_ME_PUEDO_BAÑAR_ME_VOY_AL_MEDICO = "No me puedo bañar, me voy al medico";
     final PersonService personService;
     final BathroomService bathroomService;
     final ClothesService clothesService;

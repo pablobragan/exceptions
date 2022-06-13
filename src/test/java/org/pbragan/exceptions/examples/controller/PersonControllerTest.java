@@ -3,7 +3,6 @@ package org.pbragan.exceptions.examples.controller;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.pbragan.exceptions.examples.model.Person;
 import org.pbragan.exceptions.examples.model.PersonState;
@@ -13,6 +12,7 @@ import org.pbragan.exceptions.examples.services.PersonService;
 import org.pbragan.exceptions.examples.services.exceptions.FallException;
 import org.pbragan.exceptions.examples.services.exceptions.NoWaterException;
 import org.pbragan.exceptions.examples.services.exceptions.PersonException;
+import org.pbragan.exceptions.examples.services.fakes.PersonaServiceDummyImpl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -47,12 +47,6 @@ public class PersonControllerTest {
         Mockito.doThrow(FallException.class).when(personService).getUpFromBed(person);
         Mockito.when(person.getState()).thenReturn(PersonState.BADLY_HURT);
         //when
-        try {
-            Person personaLuegoDucha = personController.takeMorningShower(person);
-            fail("Se cayó y está mal herido, no debería haberse bañado...");
-        }catch (PersonException personException){
-            //then
-            assertEquals(PersonController.NO_ME_PUEDO_BAÑAR_ME_VOY_AL_MEDICO,personException.getMessage());
-        }
+        assertThrows(PersonException.class, () -> personController.takeMorningShower(person),"No se arrojo la excepción esperada :-(");
     }
 }
