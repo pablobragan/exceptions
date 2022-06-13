@@ -48,5 +48,9 @@ public class PersonControllerTest {
         Mockito.when(person.getState()).thenReturn(PersonState.BADLY_HURT);
         //when
         assertThrows(PersonException.class, () -> personController.takeMorningShower(person),"No se arrojo la excepción esperada :-(");
+        //then
+        Mockito.verify(personService,Mockito.times(1)).awake(person);
+        Mockito.verify(personService,Mockito.times(1)).getUpFromBed(person);
+        Mockito.verify(personService,Mockito.never()).undress(person);
     }
 }
